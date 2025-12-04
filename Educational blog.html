@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTech Blog</title>
+
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background: #f4f4f4; }
+        header { background: #333; color: white; padding: 20px; text-align: center; }
+        nav { background: #444; padding: 12px; text-align: center; }
+        nav a { color: white; margin: 0px 15px; text-decoration: none; font-size: 18px; }
+        nav a:hover { text-decoration: underline; }
+
+        .container { width: 85%; margin: 20px auto; }
+        .section-title { font-size: 28px; margin-top: 20px; }
+
+        /* Post list */
+        .post { background: white; padding: 20px; border-radius: 6px; margin-bottom: 20px; }
+        .post h3 { margin: 0; }
+        .post a { color: #0077cc; }
+
+        /* Tags & Categories */
+        .box { background: white; padding: 15px; border-radius: 6px; margin-top: 10px; }
+        .tag { display: inline-block; background: #ddd; padding: 6px 12px; border-radius: 3px; margin: 5px; }
+
+        /* Blog post section */
+        #postContent { display: none; }
+        #backBtn { margin-top: 10px; display: inline-block; padding: 8px 15px; background: #444; color: white; border-radius: 5px; cursor: pointer; }
+
+        /* Comments */
+        textarea { width: 100%; height: 120px; margin-bottom: 10px; padding: 10px; }
+        input { width: 100%; padding: 10px; margin-bottom: 10px; }
+        button { padding: 10px 20px; cursor: pointer; }
+        .comment { background: #efefef; padding: 10px; border-radius: 5px; margin-top: 10px; }
+        
+        footer { background: #333; color: white; text-align: center; padding: 20px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>EduTech Blog</h1>
+    <p>Technology • Health • Finance</p>
+</header>
+
+<nav>
+    <a href="#" onclick="showHome()">Home</a>
+    <a href="#">Technology</a>
+    <a href="#">Health</a>
+    <a href="#">Finance</a>
+</nav>
+
+
+<div class="container">
+
+    <!-- HOME PAGE -->
+    <div id="homePage">
+
+        <h2 class="section-title">Latest Posts</h2>
+
+        <div class="post">
+            <h3><a href="#" onclick="openPost()">The Future of Artificial Intelligence</a></h3>
+            <p>Explore how AI is transforming industries... <a href="#" onclick="openPost()">Read more</a></p>
+            <p><strong>Category:</strong> Technology</p>
+            <p><strong>Tags:</strong> AI, Machine Learning, Innovation</p>
+        </div>
+
+        <h2 class="section-title">Categories</h2>
+        <div class="box">
+            <ul>
+                <li><a href="#">Technology</a></li>
+                <li><a href="#">Health</a></li>
+                <li><a href="#">Finance</a></li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">Tags</h2>
+        <div class="box">
+            <span class="tag">AI</span>
+            <span class="tag">Blockchain</span>
+            <span class="tag">Fitness</span>
+            <span class="tag">Investing</span>
+            <span class="tag">Nutrition</span>
+        </div>
+    </div>
+
+
+
+    <!-- BLOG POST PAGE -->
+    <div id="postContent">
+        <span id="backBtn" onclick="showHome()">← Back to Home</span>
+
+        <h2 style="margin-top:20px;">The Future of Artificial Intelligence</h2>
+        <p>Artificial Intelligence (AI) is transforming industries from healthcare to finance. 
+           As machine learning and automation grow, AI is expected to become an essential part of daily life...</p>
+
+        <hr>
+
+        <h3>Leave a Comment</h3>
+        <input type="text" id="name" placeholder="Your Name">
+        <textarea id="comment" placeholder="Write your comment..."></textarea>
+        <button onclick="addComment()">Post Comment</button>
+
+        <h3 style="margin-top:20px;">Comments</h3>
+        <div id="commentSection"></div>
+    </div>
+
+</div>
+
+
+<footer>
+    EduTech Blog © 2025
+</footer>
+
+
+<script>
+    function openPost() {
+        document.getElementById("homePage").style.display = "none";
+        document.getElementById("postContent").style.display = "block";
+    }
+
+    function showHome() {
+        document.getElementById("homePage").style.display = "block";
+        document.getElementById("postContent").style.display = "none";
+    }
+
+    function addComment() {
+        const name = document.getElementById("name").value;
+        const comment = document.getElementById("comment").value;
+
+        if (!name || !comment) {
+            alert("Please enter name and comment.");
+            return;
+        }
+
+        const commentBox = document.createElement("div");
+        commentBox.className = "comment";
+        commentBox.innerHTML = `<strong>${name}</strong><p>${comment}</p>`;
+
+        document.getElementById("commentSection").appendChild(commentBox);
+
+        document.getElementById("name").value = "";
+        document.getElementById("comment").value = "";
+    }
+</script>
+
+</body>
+</html>
+
+</body>
+</html>
